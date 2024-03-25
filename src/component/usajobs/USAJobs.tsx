@@ -30,6 +30,7 @@ export const USAJobs = () => {
       </div>
     );
 
+  console.log("--ssss-------", data?.SearchResult);
   return (
     <div>
       <div className="container">
@@ -39,11 +40,11 @@ export const USAJobs = () => {
               className="card bg-white mb-2 col-sm-6 border border-white"
               key={index + "-job"}
             >
-              <Row className="card-header h-25 d-inline-block text-black bg-transparent text-center">
-                <h5>{jobData?.MatchedObjectDescriptor?.PositionTitle}</h5>
+              <Row className="card-header d-inline-block text-black bg-transparent text-center">
+                <h6>{jobData?.MatchedObjectDescriptor?.PositionTitle}</h6>
               </Row>
-              <div className="card-body h-75 text-white job-card-body">
-                <h5 className="card-title">Overview</h5>
+              <div className="card-body text-white job-card-body">
+                <h6 className="card-title">Overview</h6>
 
                 <Row>
                   <Col className="col-6">
@@ -139,7 +140,7 @@ export const USAJobs = () => {
                   <Col>{jobData?.MatchedObjectDescriptor?.DepartmentName}</Col>
                 </Row>
 
-                <Row className="d-flex justify-content-start">
+                <Row className="d-flex mt-1">
                   <button
                     onClick={() => {
                       updateDuty(index);
@@ -154,11 +155,11 @@ export const USAJobs = () => {
                     <VerticallyCenteredModal
                       show={dutyModalShow}
                       onHide={() => setDutyModalShow(false)}
-                      MajorDuties={
+                      MajorDuties={[
                         data?.SearchResult?.SearchResultItems[0]
                           ?.MatchedObjectDescriptor?.UserArea?.Details
-                          ?.MajorDuties
-                      }
+                          ?.MajorDuties,
+                      ]}
                       title={"Duties"}
                     />
                   )}

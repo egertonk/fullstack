@@ -35,6 +35,10 @@ code {
   border-color: white;
 }
 
+.card-header {
+  height: 50px;
+}
+
 .bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgb(41 32 32) !important;

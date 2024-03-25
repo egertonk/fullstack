@@ -64,7 +64,7 @@ export const NavBar: React.FC<any> = ({
             ))}
           </ul>
 
-          {window.location.href.includes("projects") && (
+          {window.location.href.includes("usa-job") && (
             <form className="d-flex me-3" onSubmit={handleSubmit}>
               <input
                 className="form-control me-2"

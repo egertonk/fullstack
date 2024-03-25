@@ -9,6 +9,7 @@ type props = {
 };
 
 export const VerticallyCenteredModal: React.FC<props> = (props) => {
+  console.log(props);
   return (
     <Modal
       {...props}
