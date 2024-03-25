@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -35,4 +34,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: black; /* Change to your desired text color on hover */
+  background-color: #f0f0f0; /* Change to your desired background color on hover */
+  /* Add any other styling you want for the hover effect */
+}
+
+.dropdown-menu {
+  height: 280px;
+  overflow-y: auto;
+  cursor: pointer;
 }
