@@ -18,7 +18,7 @@ export const NavBar: React.FC<any> = ({
   const { formValues, handleChange, handleSubmit } = useUSAJobs();
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light shadow nav-body mb-4">
+    <nav className="navbar navbar-expand-md navbar-light shadow nav-body common-bg">
       <div className="container-fluid">
         <Link className="navbar-brand" to={`/`}>
           <img
@@ -42,19 +42,22 @@ export const NavBar: React.FC<any> = ({
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          className="collapse navbar-collapse common-bg"
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav me-auto mb-2 mb-md-1">
             {navItems?.map((items, index) => (
               <li
                 key={items}
-                className="nav-item text-white"
+                className="nav-item me-1"
                 onClick={() => setSelectedIndex(index)}
               >
                 <Link
                   className={
                     selectedIndex == index
-                      ? "nav-link active fw-bold"
-                      : "nav-link"
+                      ? "nav-link active fw-bold bg-white text-black"
+                      : "nav-link nav-li text-white "
                   }
                   to={`/${items.toLocaleLowerCase()}`}
                 >

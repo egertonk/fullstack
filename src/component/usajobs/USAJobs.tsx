@@ -1,7 +1,8 @@
 import React from "react";
-import { Col, Dropdown, NavDropdown, Row } from "react-bootstrap";
+import { Col, NavDropdown, Row } from "react-bootstrap";
 import { useUSAJobs } from "../usajobs/useUSAJobs.tsx";
-import { VerticallyCenteredModal } from "../usajobs/VerticallyCenteredModal.tsx";
+import { VerticallyCenteredModal } from "../common/VerticallyCenteredModal.tsx";
+import { NoResult } from "../common/NoResult.tsx";
 
 export const USAJobs = () => {
   const {
@@ -23,23 +24,22 @@ export const USAJobs = () => {
 
   if (data?.SearchResult?.SearchResultCountAll === 0)
     return (
-      <div className="container">
-        <div className="card bg-white mb-2 border border-white">
-          No Result - Update your search
-        </div>
-      </div>
+      <NoResult
+        message={
+          <>
+            <h1>USAJobs.Gov</h1>
+            <h3>No Result - Update your search</h3>
+          </>
+        }
+      />
     );
 
-  console.log("--ssss-------", data?.SearchResult);
   return (
     <div>
       <div className="container">
-        <Row>
+        <Row className="m-0">
           {data?.SearchResult?.SearchResultItems?.map((jobData, index) => (
-            <div
-              className="card bg-white mb-2 col-sm-6 border border-white"
-              key={index + "-job"}
-            >
+            <div className="card mb-2 col-sm-6" key={index + "-job"}>
               <Row className="card-header d-inline-block text-black bg-transparent text-center">
                 <h6>{jobData?.MatchedObjectDescriptor?.PositionTitle}</h6>
               </Row>

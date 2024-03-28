@@ -19,7 +19,6 @@ export const getUserSearch = (
 };
 
 export const useGetUser = (formValues?: FormValues, refetchAgain?: boolean) => {
-  console.log("title:  ", formValues);
   return useQuery(
     [`search`],
     () => getUserSearch("/api/search?JobCategoryCode=2210", formValues),

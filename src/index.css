@@ -1,11 +1,18 @@
 body {
-  margin: 0;
+  padding: 0;
+  background: #999;
+  background-color: #999 !important;
+  margin-bottom: 1em;
+  font-size: 80%;
+  min-width: 320px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
+}
+
+.main-body {
+  /* background-color: white !important; */
+  max-height: 100px;
 }
 
 code {
@@ -13,8 +20,25 @@ code {
     monospace;
 }
 
+.container {
+  background: #fff;
+  margin: 0 auto;
+  padding: 0;
+  border-top: none;
+}
+
+.common-bg {
+  background-color: #364e71 !important;
+}
+
 .nav-body {
-  background-color: #dee2e6 !important;
+  height: 76px;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-collapse {
+  z-index: 1;
 }
 
 .job-card {

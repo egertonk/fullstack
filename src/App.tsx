@@ -11,14 +11,17 @@ function App() {
   let items = ["Home", "USA-Jobs", "Service", "Resume"];
 
   return (
-    <div className="App">
+    <div className="container">
       <NavBar brandName="" imageSrcPath={logo} navItems={items} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/usa-jobs" element={<USAJobs />} />
-        {/* <Route path="/finance" element={<Finance />} />
+      <div className="main-body h-100">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/usa-jobs" element={<USAJobs />} />
+          {/* <Route path="/finance" element={<Finance />} />
         <Route path="/contact" element={<Contact />} /> */}
-      </Routes>
+        </Routes>
+      </div>
       {/* <Resume /> */}
     </div>
   );
