@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useGetUser } from "../../utils/get.API.ts";
+import { useGetUsaJobs } from "../../utils/get.API.ts";
 import { useQueryClient } from "react-query";
 import { FormValues } from "../../types/USAJob-Tyoes.ts";
 
@@ -15,7 +15,7 @@ export const useUSAJobs = (): Record<string, any> => {
     location: "",
   });
 
-  const { data, isFetched } = useGetUser(formValues, refetchAgain);
+  const { data, isFetched } = useGetUsaJobs(formValues, refetchAgain);
 
   useEffect(() => {
     let tempCountList = [] as number[];

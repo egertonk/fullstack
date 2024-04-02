@@ -1,12 +1,5 @@
 import React from "react";
 
-type props = {
-  show: boolean;
-  onHide: () => void;
-  MajorDuties: string[];
-  title: string;
-};
-
 export const HomePage = () => {
   return (
     <div
@@ -15,7 +8,7 @@ export const HomePage = () => {
     >
       <div className="p-2 m-2 common-bg text-white shadow rounded-2">
         <h1>Welcome to Egerton During Portfolio!</h1>
-        <h3>I ama junior fullstack developer</h3>
+        <h3>I'm a junior fullstack developer</h3>
         <span>please see my resume for more details.</span>
       </div>
     </div>
