@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUSAJobs } from "../usajobs/useUSAJobs.tsx";
+import { useWeather } from "../weather/useWeather.tsx";
 
 interface NavBarProps {
   brandName: string;
@@ -16,6 +17,10 @@ export const NavBar: React.FC<any> = ({
 }: NavBarProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const { formValues, handleChange, handleSubmit } = useUSAJobs();
+  const { weatherLocation, handleChangeWeather, handleWeatherSubmit } =
+    useWeather();
+  const isShowUSAJobs = window.location.href.includes("usa-job");
+  const isShowWeather = window.location.href.includes("weather");
 
   return (
     <nav className="navbar navbar-expand-md navbar-light shadow nav-body common-bg">
@@ -67,7 +72,24 @@ export const NavBar: React.FC<any> = ({
             ))}
           </ul>
 
-          {window.location.href.includes("usa-job") && (
+          {isShowWeather && (
+            <form className="d-flex me-3" onSubmit={handleWeatherSubmit}>
+              <input
+                className="form-control me-2"
+                type="text"
+                placeholder="location"
+                aria-label="Location"
+                name="location"
+                value={weatherLocation}
+                onChange={handleChangeWeather}
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          )}
+
+          {isShowUSAJobs && (
             <form className="d-flex me-3" onSubmit={handleSubmit}>
               <input
                 className="form-control me-2"
@@ -78,6 +100,7 @@ export const NavBar: React.FC<any> = ({
                 value={formValues.title}
                 onChange={handleChange}
               />
+
               <input
                 className="form-control me-2"
                 type="text"

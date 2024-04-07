@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
-import { getWrapper, getWrapperUSAJobs } from "./fetch.ts";
+import { getRegularWrapper, getWrapper, getWrapperUSAJobs } from "./fetch.ts";
 import { FormValues, USASearchTypes } from "../types/USAJob-Tyoes.ts";
+import { WeatherData, WeatherError } from "../types/WeatherTypes.tsx";
 
 // export const url = "https://data.usajobs.gov";
 export const localUrl = "http://localhost:8080"; // todo Move
@@ -45,6 +46,26 @@ export const useGetUsaJobs = (
 ) => {
   return useQuery([`usajobs`], () => geUsaJobs("current-jobs", formValues), {
     placeholderData: [] as unknown as USASearchTypes,
+    enabled: refetchAgain,
+  });
+};
+
+// Weather
+export const getUsaWeather = (
+  weatherLocation: string
+): Promise<WeatherData | WeatherError> => {
+  return getRegularWrapper(`${localUrl}/weather/`, weatherLocation).then(
+    (data) => {
+      return data;
+    }
+  );
+};
+
+export const useGetWeather = (
+  weatherLocation: string,
+  refetchAgain?: boolean
+) => {
+  return useQuery([`weather`], () => getUsaWeather(weatherLocation), {
     enabled: refetchAgain,
   });
 };

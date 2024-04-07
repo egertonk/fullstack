@@ -1,7 +1,6 @@
 body {
   padding: 0;
-  background: #999;
-  background-color: #999 !important;
+  /* background-color: #999 !important; */
   margin-bottom: 1em;
   font-size: 80%;
   min-width: 320px;
@@ -66,4 +65,25 @@ code {
 .bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgb(41 32 32) !important;
+}
+
+/* Weather */
+.weatherOverview {
+  margin: 3%;
+  border-radius: 6px;
+  color: black;
+}
+
+.weather-city-name {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.day-header {
+  background-color: #364e71;
+  color: white;
+}
+
+.weather-data-size {
+  width: 35%;
 }
