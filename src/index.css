@@ -1,6 +1,8 @@
 body {
   padding: 0;
   /* background-color: #999 !important; */
+  background-color: #443030;
+  color: white;
   margin-bottom: 1em;
   font-size: 80%;
   min-width: 320px;
@@ -20,7 +22,7 @@ code {
 }
 
 .container {
-  background: #fff;
+  /* background: #fff; */
   margin: 0 auto;
   padding: 0;
   border-top: none;
@@ -32,7 +34,7 @@ code {
 
 .nav-body {
   height: 76px;
-  color: white;
+  /* color: white; */
   font-weight: bold;
 }
 
@@ -71,7 +73,7 @@ code {
 .weatherOverview {
   margin: 3%;
   border-radius: 6px;
-  color: black;
+  /* color: black; */
 }
 
 .weather-city-name {
@@ -86,4 +88,14 @@ code {
 
 .weather-data-size {
   width: 35%;
+}
+
+/* US Markets */
+.slider {
+  width: 25%;
+}
+
+.stock-details {
+  background-color: #6495ed47;
+  font-size: medium;
 }

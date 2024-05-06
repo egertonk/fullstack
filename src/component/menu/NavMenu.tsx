@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUSAJobs } from "../usajobs/useUSAJobs.tsx";
 import { useWeather } from "../weather/useWeather.tsx";
+import { useUSMarketsAll } from "../investments/useUSMarketsAll.tsx";
 
 interface NavBarProps {
   brandName: string;
@@ -17,10 +18,13 @@ export const NavBar: React.FC<any> = ({
 }: NavBarProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const { formValues, handleChange, handleSubmit } = useUSAJobs();
-  const { weatherLocation, handleChangeWeather, handleWeatherSubmit } =
+  const { weatherLocation, handleWeatherSubmit, handleChangeWeather } =
     useWeather();
+  const { sticker, handleChangeUSMarkets, handleUSMarketsSubmit } =
+    useUSMarketsAll();
   const isShowUSAJobs = window.location.href.includes("usa-job");
   const isShowWeather = window.location.href.includes("weather");
+  const isShowUSMarkets = window.location.href.includes("us-markets");
 
   return (
     <nav className="navbar navbar-expand-md navbar-light shadow nav-body common-bg">
@@ -72,12 +76,29 @@ export const NavBar: React.FC<any> = ({
             ))}
           </ul>
 
+          {isShowUSMarkets && (
+            <form className="d-flex me-3" onSubmit={handleUSMarketsSubmit}>
+              <input
+                className="form-control me-2"
+                type="text"
+                placeholder="Stock Sticker"
+                aria-label="Location"
+                name="sticker"
+                value={sticker}
+                onChange={handleChangeUSMarkets}
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          )}
+
           {isShowWeather && (
             <form className="d-flex me-3" onSubmit={handleWeatherSubmit}>
               <input
                 className="form-control me-2"
                 type="text"
-                placeholder="location"
+                placeholder="Location"
                 aria-label="Location"
                 name="location"
                 value={weatherLocation}

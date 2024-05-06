@@ -13,7 +13,7 @@ export const useWeather = (): Record<string, any> => {
   );
 
   useEffect(() => {
-    if (isFetched) setWeatherData(data);
+    if (isFetched) setWeatherData(data as WeatherData);
   }, [data]);
 
   const handleChangeWeather = (e: React.ChangeEvent<HTMLInputElement>) => {

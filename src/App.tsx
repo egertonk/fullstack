@@ -7,9 +7,18 @@ import logo from "../src/assets/images/ed.jpg";
 import { USAJobs } from "./component/usajobs/USAJobs.tsx";
 import { HomePage } from "./component/HomePage.tsx";
 import Weather from "./component/weather/Weather.tsx";
+import { PaypalPayments } from "./component/paypal/PaypalPayments.tsx";
+import { USMarkets } from "./component/investments/USMarkets.tsx";
 
 function App() {
-  let items = ["Home", "USA-Jobs", "Weather", "Resume"];
+  let items = [
+    "Home",
+    "USA-Jobs",
+    "Weather",
+    "US-Markets",
+    "Checkout",
+    "Resume",
+  ];
 
   return (
     <div className="container">
@@ -20,11 +29,10 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/usa-jobs" element={<USAJobs />} />
           <Route path="/weather" element={<Weather />} />
-          {/* <Route path="/finance" element={<Finance />} />
-        <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/checkout" element={<PaypalPayments />} />
+          <Route path="/us-markets" element={<USMarkets />} />
         </Routes>
       </div>
-      {/* <Resume /> */}
     </div>
   );
 }

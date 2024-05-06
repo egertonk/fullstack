@@ -9,10 +9,10 @@ export const useUSAJobs = (): Record<string, any> => {
   const [dutyModalShow, setDutyModalShow] = React.useState(false);
   const [requirementlist, setRequirementlist] = useState([] as number[]);
   const [requirementModalShow, setRequirementModalShow] = React.useState(false);
-  const [refetchAgain, setRefetchAgain] = React.useState(false);
+  const [refetchAgain, setRefetchAgain] = React.useState(true);
   const [formValues, setFormValues] = useState<FormValues>({
     title: "",
-    location: "",
+    location: "DC",
   });
 
   const { data, isFetched } = useGetUsaJobs(formValues, refetchAgain);
@@ -22,6 +22,7 @@ export const useUSAJobs = (): Record<string, any> => {
     data?.SearchResult?.SearchResultItems?.map((jobData, index) =>
       tempCountList.push(index)
     );
+    setRefetchAgain(false);
     setDutieslist(tempCountList);
     setRequirementlist(tempCountList);
   }, []);

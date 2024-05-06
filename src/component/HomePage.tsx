@@ -3,7 +3,7 @@ import React from "react";
 export const HomePage = () => {
   return (
     <div
-      className="container d-flex align-items-center justify-content-center text-center bg-white"
+      className="container d-flex align-items-center justify-content-center text-center"
       style={{ height: "250px" }}
     >
       <div className="p-2 m-2 common-bg text-white shadow rounded-2">

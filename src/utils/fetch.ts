@@ -45,17 +45,23 @@ export const getWrapper = async (url: string, formValues?: FormValues) => {
     });
 };
 
-export const getRegularWrapper = async (
-  url: string,
-  weatherLocation: string
-) => {
+export const getRegularWrapper = async (url: string, body: []) => {
   const queryParams = new URLSearchParams();
-  queryParams.append("weatherLocation", weatherLocation);
-  const fullUrl = `${url}?${queryParams.toString()}`;
 
-  return fetch(fullUrl, {
+  for (const key in body) {
+    if (Object.hasOwnProperty.call(body, key)) {
+      const value = body[key];
+      queryParams.append(`${key}`, value);
+    }
+  }
+
+  const fullUrl = `${url}?${queryParams.toString()}`;
+  const requestOptions = {
     method: "GET",
-  })
+    redirect: "follow",
+  };
+
+  return fetch(fullUrl, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       return data;
