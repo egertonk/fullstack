@@ -31,14 +31,14 @@ import { USMarketsData } from "../types/USMarkets.ts";
 // };
 
 const aws = "http://ec2-18-217-69-142.us-east-2.compute.amazonaws.com:8080/";
+const isInGit = window.location.href.includes("github.io");
 
 // USAJOBs
 export const geUsaJobs = (
   endpointName?: string,
   formValues?: FormValues
 ): Promise<USASearchTypes> => {
-  const url =
-    process.env.REACT_APP_API_STATUS === "true" ? `usajobs/` : `${aws}usajobs/`;
+  const url = isInGit ? `${aws}usajobs/` : `usajobs/`;
 
   return getWrapper(`${url}${endpointName}`, formValues).then((data) => {
     return data;
@@ -63,8 +63,7 @@ export const getUsaWeather = (
     weatherLocation: weatherLocation || "",
   };
 
-  const url =
-    process.env.REACT_APP_API_STATUS === "true" ? `weather/` : `${aws}weather/`;
+  const url = isInGit ? `${aws}weather/` : `weather/`;
 
   return getRegularWrapper(url, body).then((data) => {
     return data;
@@ -85,14 +84,8 @@ export const getUSMarkets = (sticker: string): Promise<USMarketsData> => {
   const body = {
     sticker: sticker || "AMZ",
   };
-  const url =
-    process.env.REACT_APP_API_STATUS === "true"
-      ? `us-markets/`
-      : `${aws}us-markets/`;
-  console.log(
-    "process.env.REACT_APP_API_STATUS  = ",
-    process.env.REACT_APP_API_STATUS
-  );
+  const url = isInGit ? `${aws}us-markets/` : `us-markets/`;
+  console.log("isInGit  = ", isInGit);
   console.log("url  = ", url);
   return getRegularWrapper(url, body).then((data) => {
     return data;
