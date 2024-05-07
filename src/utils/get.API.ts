@@ -89,7 +89,11 @@ export const getUSMarkets = (sticker: string): Promise<USMarketsData> => {
     process.env.REACT_APP_API_STATUS === "true"
       ? `us-markets/`
       : `${aws}us-markets/`;
-
+  console.log(
+    "process.env.REACT_APP_API_STATUS  = ",
+    process.env.REACT_APP_API_STATUS
+  );
+  console.log("url  = ", url);
   return getRegularWrapper(url, body).then((data) => {
     return data;
   });
