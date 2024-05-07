@@ -30,12 +30,17 @@ import { USMarketsData } from "../types/USMarkets.ts";
 //   );
 // };
 
+const aws = "http://ec2-18-217-69-142.us-east-2.compute.amazonaws.com:8080/";
+
 // USAJOBs
 export const geUsaJobs = (
   endpointName?: string,
   formValues?: FormValues
 ): Promise<USASearchTypes> => {
-  return getWrapper(`/usajobs/${endpointName}`, formValues).then((data) => {
+  const url =
+    process.env.REACT_APP_API_STATUS === "true" ? `usajobs/` : `${aws}usajobs/`;
+
+  return getWrapper(`${url}${endpointName}`, formValues).then((data) => {
     return data;
   });
 };
@@ -58,8 +63,10 @@ export const getUsaWeather = (
     weatherLocation: weatherLocation || "",
   };
 
-  return getRegularWrapper(`weather/`, body).then((data) => {
-    console.log("data ", data);
+  const url =
+    process.env.REACT_APP_API_STATUS === "true" ? `weather/` : `${aws}weather/`;
+
+  return getRegularWrapper(url, body).then((data) => {
     return data;
   });
 };
@@ -78,7 +85,12 @@ export const getUSMarkets = (sticker: string): Promise<USMarketsData> => {
   const body = {
     sticker: sticker || "AMZ",
   };
-  return getRegularWrapper(`us-markets/`, body).then((data) => {
+  const url =
+    process.env.REACT_APP_API_STATUS === "true"
+      ? `us-markets/`
+      : `${aws}us-markets/`;
+
+  return getRegularWrapper(url, body).then((data) => {
     return data;
   });
 };

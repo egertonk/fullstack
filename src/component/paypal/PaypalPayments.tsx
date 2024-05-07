@@ -48,10 +48,10 @@ export function PaypalPayments() {
    */
   const createPaypalOrder = async (cart) => {
     // use the cart information passed from the front-end to calculate the purchase unit details
-    console.log(
-      "shopping cart information passed from the frontend createPaypalOrder() callback:",
-      cart
-    );
+    // console.log(
+    //   "shopping cart information passed from the frontend createPaypalOrder() callback:",
+    //   cart
+    // );
 
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
@@ -66,7 +66,7 @@ export function PaypalPayments() {
         },
       ],
     };
-    console.log("url ", url);
+
     const response = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export function PaypalPayments() {
   async function handleResponse(response) {
     try {
       const jsonResponse = await response.json();
-      console.log("jsonResponse ", jsonResponse);
+      // console.log("jsonResponse ", jsonResponse);
       return {
         jsonResponse,
         httpStatusCode: response.status,
@@ -188,11 +188,11 @@ export function PaypalPayments() {
                 setMessage(
                   `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`
                 );
-                console.log(
-                  "Capture result",
-                  orderData,
-                  JSON.stringify(orderData, null, 2)
-                );
+                // console.log(
+                //   "Capture result",
+                //   orderData,
+                //   JSON.stringify(orderData, null, 2)
+                // );
               }
             } catch (error) {
               console.error(error);
