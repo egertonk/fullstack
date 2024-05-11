@@ -30,7 +30,7 @@ import { USMarketsData } from "../types/USMarkets.ts";
 //   );
 // };
 
-const aws = "http://ec2-18-217-69-142.us-east-2.compute.amazonaws.com:8080/";
+const aws = "http://acme.duringfamily.com:8080/";
 const isInGit = window.location.href.includes("github.io");
 
 // USAJOBs
@@ -38,7 +38,8 @@ export const geUsaJobs = (
   endpointName?: string,
   formValues?: FormValues
 ): Promise<USASearchTypes> => {
-  const url = isInGit ? `${aws}usajobs/` : `usajobs/`;
+  // const url = isInGit ? `${aws}usajobs/` : `usajobs/`;
+  const url = `usajobs/`;
 
   return getWrapper(`${url}${endpointName}`, formValues).then((data) => {
     return data;
@@ -63,7 +64,8 @@ export const getUsaWeather = (
     weatherLocation: weatherLocation || "",
   };
 
-  const url = isInGit ? `${aws}weather/` : `weather/`;
+  // const url = isInGit ? `${aws}weather/` : `weather/`;
+  const url = `weather/`;
 
   return getRegularWrapper(url, body).then((data) => {
     return data;
@@ -84,7 +86,8 @@ export const getUSMarkets = (sticker: string): Promise<USMarketsData> => {
   const body = {
     sticker: sticker || "AMZ",
   };
-  const url = isInGit ? `${aws}us-markets/` : `us-markets/`;
+  // const url = isInGit ? `${aws}us-markets/` : `us-markets/`;
+  const url = `us-markets/`;
   console.log("isInGit  = ", isInGit);
   console.log("url  = ", url);
   return getRegularWrapper(url, body).then((data) => {
