@@ -31,6 +31,7 @@ import { USMarketsData } from "../types/USMarkets.ts";
 // };
 
 const aws = "http://acme.duringfamily.com:8080/";
+const duringURL = "https://duringfamily.com/";
 const isInGit = window.location.href.includes("github.io");
 
 // USAJOBs
@@ -39,7 +40,7 @@ export const geUsaJobs = (
   formValues?: FormValues
 ): Promise<USASearchTypes> => {
   // const url = isInGit ? `${aws}usajobs/` : `usajobs/`;
-  const url = `usajobs/`;
+  const url = `${duringURL}usajobs/`;
 
   return getWrapper(`${url}${endpointName}`, formValues).then((data) => {
     return data;
@@ -65,7 +66,7 @@ export const getUsaWeather = (
   };
 
   // const url = isInGit ? `${aws}weather/` : `weather/`;
-  const url = `weather/`;
+  const url = `${duringURL}weather/`;
 
   return getRegularWrapper(url, body).then((data) => {
     return data;
@@ -87,7 +88,7 @@ export const getUSMarkets = (sticker: string): Promise<USMarketsData> => {
     sticker: sticker || "AMZ",
   };
   // const url = isInGit ? `${aws}us-markets/` : `us-markets/`;
-  const url = `us-markets/`;
+  const url = `${duringURL}us-markets/`;
   console.log("isInGit  = ", isInGit);
   console.log("url  = ", url);
   return getRegularWrapper(url, body).then((data) => {
