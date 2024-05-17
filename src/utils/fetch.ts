@@ -59,9 +59,18 @@ export const getRegularWrapper = async (url: string, body: []) => {
   const requestOptions = {
     method: "GET",
     redirect: "follow",
+    mode: "cors",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(body),
   };
 
-  return fetch(fullUrl, requestOptions)
+  return fetch(url, {
+    method: "GET",
+    redirect: "follow",
+    mode: "cors",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(body),
+  })
     .then((response) => response.json())
     .then((data) => {
       return data;
