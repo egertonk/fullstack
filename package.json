@@ -1,9 +1,9 @@
 {
-  "homepage": "https://duringfamily.com/",
+  "homepage": "https://www.duringfamily.com",
   "name": "egerton-portfolio",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://duringfamily.com/",
+  "proxy": "https://www.duringfamily.com",
   "dependencies": {
     "@paypal/react-paypal-js": "^8.2.0",
     "@testing-library/jest-dom": "^5.17.0",
