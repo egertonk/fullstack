@@ -28,9 +28,7 @@ export const getWrapper = async (url: string, formValues?: FormValues) => {
 
   return fetch(fullUrl, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
   })
     .then((response) => response.json())
     .then((data) => {
@@ -66,9 +64,6 @@ export const getRegularWrapper = async (url: string, body: []) => {
 
   return fetch(url, {
     method: "GET",
-    redirect: "follow",
-    mode: "cors",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
