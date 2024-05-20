@@ -33,6 +33,7 @@ import { USMarketsData } from "../types/USMarkets.ts";
 const aws = "http://acme.duringfamily.com:8080/";
 const duringURL = "https://duringfamily.com/";
 const isInGit = window.location.href.includes("github.io");
+const awsURL = "http://18.217.69.142:8080/";
 
 // USAJOBs
 export const geUsaJobs = (
