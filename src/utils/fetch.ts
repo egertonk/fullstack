@@ -11,8 +11,8 @@ const handleError = async (data: Response, noJSON: boolean) => {
   }
 };
 
-export const getWrapperUSAJobs = async (url: string) =>
-  fetch(url, fetchData).then((response) => response.json());
+// export const getWrapperUSAJobs = async (url: string) =>
+//   fetch(url, fetchData).then((response) => response.json());
 
 export const getWrapper = async (url: string, formValues?: FormValues) => {
   // Construct query parameters
@@ -25,10 +25,17 @@ export const getWrapper = async (url: string, formValues?: FormValues) => {
 
   // Append query parameters to URL
   const fullUrl = `${url}?${queryParams.toString()}`;
+  console.log("fullUrl = ", fullUrl);
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,POST,PATCH,OPTIONS",
+  };
 
+  // headers: { "Content-Type": "application/json", Accept: "application/json" },
   return fetch(fullUrl, {
     method: "GET",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    headers,
   })
     .then((response) => response.json())
     .then((data) => {
@@ -43,34 +50,34 @@ export const getWrapper = async (url: string, formValues?: FormValues) => {
     });
 };
 
-export const getRegularWrapper = async (url: string, body: []) => {
-  const queryParams = new URLSearchParams();
+// export const getRegularWrapper = async (url: string, body: []) => {
+//   const queryParams = new URLSearchParams();
 
-  for (const key in body) {
-    if (Object.hasOwnProperty.call(body, key)) {
-      const value = body[key];
-      queryParams.append(`${key}`, value);
-    }
-  }
+//   for (const key in body) {
+//     if (Object.hasOwnProperty.call(body, key)) {
+//       const value = body[key];
+//       queryParams.append(`${key}`, value);
+//     }
+//   }
 
-  const fullUrl = `${url}?${queryParams.toString()}`;
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-    mode: "cors",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(body),
-  };
+//   const fullUrl = `${url}?${queryParams.toString()}`;
+//   const requestOptions = {
+//     method: "GET",
+//     redirect: "follow",
+//     mode: "cors",
+//     headers: { "Content-Type": "application/json", Accept: "application/json" },
+//     body: JSON.stringify(body),
+//   };
 
-  return fetch(url, {
-    method: "GET",
-    body: JSON.stringify(body),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      return error;
-    });
-};
+//   return fetch(url, {
+//     method: "GET",
+//     body: JSON.stringify(body),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// };
